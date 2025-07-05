@@ -1,0 +1,92 @@
+🏁 🍇                       # 程序入口
+
+  # 初始状态
+  🔤forest🔤           ➡️ room        # 玩家当前位置
+  []                 ➡️ bag          # 背包
+  👍                 ➡️ playing      # 游戏主循环控制
+
+  😀 🔤欢迎来到 Emoji 冒险！输入 help 查看指令，exit 退出。🔤❗️
+
+  🔁 playing ❗️🍇                   # while playing == 👍
+    😀 🔤〉🔤❗️                      # 提示符
+    🔡 ▶️ ➡️ cmd                    # 读取一行输入到 cmd
+
+    # ---- exit ----
+    ❓ cmd 🐽 🔤exit🔤 ❗️🍇
+      👎 ➡️ playing
+      😀 🔤再见！🔤❗️
+    🍉
+
+    # ---- help ----
+    ❓ cmd 🐽 🔤help🔤 ❗️🍇
+      😀 🔤指令：look / n / s / take / inventory / exit🔤❗️
+    🍉
+
+    # ---- look ----
+    ❓ cmd 🐽 🔤look🔤 ❗️🍇
+      ❓ room 🐽 🔤forest🔤 ❗️🍇
+        😀 🔤你身处森林，北面有座石桥。🔤❗️
+      🍉
+      ❓ room 🐽 🔤bridge🔤 ❗️🍇
+        😀 🔤你站在石桥上，北面是洞穴。🔤❗️
+      🍉
+      ❓ room 🐽 🔤cave🔤 ❗️🍇
+        😀 🔤幽暗洞穴，地上有 🗡️ (sword)。🔤❗️
+      🍉
+    🍉
+
+    # ---- n（向北）----
+    ❓ cmd 🐽 🔤n🔤 ❗️🍇
+      ❓ room 🐽 🔤forest🔤 ❗️🍇
+        🔤bridge🔤 ➡️ room
+        😀 🔤你走到石桥。🔤❗️
+      🍉
+      ❓ room 🐽 🔤bridge🔤 ❗️🍇
+        🔤cave🔤 ➡️ room
+        😀 🔤你进入洞穴。🔤❗️
+      🍉
+      ❓ room 🐽 🔤cave🔤 ❗️🍇
+        😀 🔤前方漆黑，无法再北行。🔤❗️
+      🍉
+    🍉
+
+    # ---- s（向南）----
+    ❓ cmd 🐽 🔤s🔤 ❗️🍇
+      ❓ room 🐽 🔤bridge🔤 ❗️🍇
+        🔤forest🔤 ➡️ room
+        😀 🔤你回到森林。🔤❗️
+      🍉
+      ❓ room 🐽 🔤cave🔤 ❗️🍇
+        🔤bridge🔤 ➡️ room
+        😀 🔤你回到石桥。🔤❗️
+      🍉
+    🍉
+
+    # ---- take ----
+    ❓ cmd 🐽 🔤take🔤 ❗️🍇
+      ❓ room 🐽 🔤cave🔤 ❗️🍇
+        🔤sword🔤 bag❗️            # 向列表 bag 追加
+        😀 🔤你拾取了 🗡️ (sword)！🔤❗️
+      🍉
+      🍉
+    🍉
+
+    # ---- inventory ----
+    ❓ cmd 🐽 🔤inventory🔤 ❗️🍇
+      ❓ bag❓ ❗️🍇                 # 若 bag 为空
+        😀 🔤背包空空如也。🔤❗️
+      🍉
+      bag❗️ ➡️ list
+      ❓ list❓ ❗️🍇
+        😀 🔤背包物品：🔤❗️
+        item list 🍇
+          😀 item❗️❗️
+        🍉
+      🍉
+    🍉
+
+    # ---- 未知指令 ----
+    😀 🔤未知指令，输入 help 查看。🔤❗️
+  🍉                                # end while
+
+🍉                                  # 程序结束
